@@ -16,26 +16,24 @@ public class Task13 {
      * @return количество шагов необходимое для полива всех растений
      */
     static int getCountSteps(int[] plants, int wateringCanVolume) {
-        int steps = 0;
+        int CountSteps = 0;
         int currentCapacity = wateringCanVolume;
-        int[] wateredPlants = new int[plants.length];
 
         for (int i = 0; i < plants.length; i++) {
             // Поливаем текущее растение
             currentCapacity -= plants[i];
 
-
             // Проверяем, достаточно ли воды для полива следующего растения
             if (i < plants.length - 1 && currentCapacity < plants[i + 1]) {
                 // Возвращаемся к реке и обратно к текущему растению
-                steps += (i + 1) * 2;
+                CountSteps += (i + 1) * 2;
                 currentCapacity = wateringCanVolume;
             }
 
             // Идем к следующему растению
-            steps++;
+            CountSteps++;
         }
 
-        return steps;
+        return CountSteps;
     }
 }
